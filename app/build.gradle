@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    dependencies {
+        /* lite version provides only map and some core services
+         * full version provides the rest of maps API
+         * routing, panoramas, search and etc.
+         * implementation 'com.yandex.android:maps.mobile:4.0.0-lite'
+         */
+        implementation 'com.yandex.android:maps.mobile:4.0.0-full'
+    }
+
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "com.example.yandexmapkittest"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url "http://maven.google.com/"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'gun0912.ted:tedpermission:2.2.3'
+}
